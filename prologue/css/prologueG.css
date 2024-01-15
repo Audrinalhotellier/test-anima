@@ -1,0 +1,45 @@
+body {
+  font-size: 30px;
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+* {
+  color: rgb(255, 255, 255);
+}
+
+.main {
+  display: flex;
+}
+
+.navigation {
+  width: 50vw;
+  height: 100vh;
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.qrcode img {
+  margin-bottom: 150px;
+  width: 100%;
+  height: auto;
+}
+
+@font-face {
+  font-family: "Dumbledor";
+  src: url('../css/dum1.ttf') format('truetype');
+  /* Ajoutez d'autres propriétés de la police si nécessaire */
+}
+
+.custom-font {
+  margin-top: 200px;
+  font-family: "Dumbledor", sans-serif;
+  /* Ajoutez d'autres styles si nécessaire */
+}
+

@@ -1,0 +1,46 @@
+body {
+  font-family: sans-serif;
+  text-shadow: #111 1px 0 10px;
+  background-color: black;
+  background-image: url("../prologue/assets/image_principal.jpg");
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+}
+
+#carte{
+  position: absolute;
+  width: 50px;
+  top: 4%;
+  left: 5%;
+}
+
+#jouer {
+  position: absolute;
+  top: 82%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-decoration: none;
+  color: white;
+  font-size: 50px;
+}
+
+#model3D {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* test.css */
+
+@font-face {
+  font-family: "Dumbledor";
+  src: url("../prologue/css/dum1.ttf") format("truetype");
+  /* Ajoutez d'autres propriétés de la police si nécessaire */
+}
+
+.custom-font {
+  font-family: "Dumbledor", sans-serif;
+  /* Ajoutez d'autres styles si nécessaire */
+}

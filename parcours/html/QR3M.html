@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+    <script src="../script/gesture-detector.js"></script>
+    <script src="../script/gesture-handler.js"></script>
+    <script src="../script/audio.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/volume.css" />
+    <link rel="stylesheet" type="text/css" href="../css/text.css" />
+    <title>Anima</title>
+  </head>
+
+  <body style="margin: 0px; overflow: hidden">
+    <!-- CAMERA -->
+    <a-scene
+      arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
+      embedded
+      renderer="logarithmicDepthBuffer: true;"
+      vr-mode-ui="enabled: false"
+      gesture-detector
+      id="scene"
+    >
+      <a-nft
+        type="nft"
+        url="../../parcours/nft/qr_code2M"
+        smooth="true"
+        smoothCount="50"
+        smoothTolerance="0.1"
+        smoothThreshold="50"
+        raycaster="objects: .clickable"
+        emitevents="true"
+        cursor="fuse: false; rayOrigin: mouse;"
+      >
+        <a-entity
+          gltf-model="../3d/strega_fermee.glb"
+          scale="1500 1500 1500"
+          position="150 30 -100"
+          rotation="-90 0 0"
+          gesture-handler
+        >
+        </a-entity>
+      </a-nft>
+      <a-entity camera></a-entity>
+    </a-scene>
+    <!-- CAMERA -->
+
+    <!-- SON -->
+    <div class="position">
+      <label for="volumeCheckbox" class="volume" onclick="toggleAudio()">
+        <input
+          id="volumeCheckbox"
+          type="checkbox"
+          class="volume-checkbox"
+          onclick="toggleAudio()"
+        />
+        <svg viewBox="0 0 108 96">
+          <path
+            d="M7,28 L35,28 L35,28 L59,8 L59,88 L35,68 L7,68 C4.790861,68 3,66.209139 3,64 L3,32 C3,29.790861 4.790861,28 7,28 Z"
+          ></path>
+          <path
+            d="M79,62 C83,57.3333333 85,52.6666667 85,48 C85,43.3333333 83,38.6666667 79,34 L49,3"
+          ></path>
+          <path
+            d="M95,69 C101.666667,61.6666667 105,54.3333333 105,47 C105,39.6666667 101.666667,32.3333333 95,25 L75.5,6 L49,33"
+          ></path>
+        </svg>
+      </label>
+    </div>
+    <!-- SON -->
+
+    <!-- SON -->
+    <audio id="ambianceAudio" loop>
+      <source
+        id="audioSource"
+        src="../son/QR3M1.mp3"
+        type="audio/mp3"
+      />
+      Your browser does not support the audio tag.
+    </audio>
+    <!-- SON -->
+    <a href="https://zehefjr.github.io/map/map/" target="_self"><img id="carte" src="../assets/carte.png"></a>
+    <!-- EXPLICATION/EGNIME/TEXTE -->
+    <div id="container1">
+      <div class="button-container">
+        <button onclick="switchContainer(4)">&#8594;</button>
+      </div>
+    </div>
+
+    <div id="container2" class="container hidden"></div>
+
+    <div id="container3" class="container hidden">
+      <p class="custom-font">Libre à toi. Dans ce cas, vas au Ponte Novu.</p>
+      <div class="button-container">
+        <button onclick="redirectWithConfirmationR();">&#8594;</button>
+      </div>
+    </div>
+
+    <div id="container4" class="container hidden">
+      <p class="custom-font">
+        Maintenant, rends-toi au Ponte Novu, et bonne chance.
+      </p>
+      <div class="button-container">
+        <button onclick="redirectWithConfirmationA();">&#8594;</button>
+      </div>
+    </div>
+
+    <div id="container5" class="container hidden">
+      <p class="custom-font">
+        Prend ce pendentif, il te sera utile par la suite. 
+      </p>
+      <div class="bottom-centered-buttons">
+        <button
+          class="bouton-container5"
+          onclick="selectPendentif(); switchContainer(3);"
+        >
+          Accepter
+        </button>
+        <button
+          class="bouton-container5"
+          onclick="selectPasPendentif(); switchContainer(2);"
+        >
+          Refuser
+        </button>
+      </div>
+    </div>
+
+    <div id="container6" class="container hidden"></div>
+
+    <div id="container7" class="container hidden"></div>
+
+    <div id="container8" class="container hidden"></div>
+
+    <div id="container9" class="container hidden"></div>
+
+    <div id="container10" class="container hidden"></div>
+    <!-- EXPLICATION/EGNIME/TEXTE -->
+
+    <!-- CHOIX PENDENTIF -->
+    <script>
+      function selectPendentif() {
+        loadNewAudio("../son/QR3M2.mp3");
+        localStorage.setItem("choixPendentif", true);
+      }
+
+      function selectPasPendentif() {
+        loadNewAudio("../son/QR3M3.mp3");
+        localStorage.setItem("choixPendentif", false);
+      }
+    </script>
+    <!-- CHOIX PENDENTIF -->
+
+    <!-- REDIRECTION VERS CAMERA -->
+    <script>
+      function redirectWithConfirmationA() {
+        window.location.href = "../ar/pendentif.html";
+      }
+
+      function redirectWithConfirmationR() {
+        window.location.href = "../ar/straga.html";
+      }
+    </script>
+    <!-- REDIRECTION VERS CAMERA -->
+
+    <!-- CONTAINER -->
+    <script src="../script/text.js"></script>
+    <!-- CONTAINER -->
+
+    <!-- SON -->
+    <script src="../script/son.js"></script>
+    <!-- SON -->
+  </body>
+</html>
